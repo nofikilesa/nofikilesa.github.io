@@ -865,7 +865,7 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
         <span class="cart-badge" id="cartBadge">0</span>
       </button>
-      <button class="action-icon" onclick="openAccount()" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-1a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v1"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
+      <button class="action-icon" onclick="signinwithgoogle()" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-1a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v1"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
       <button class="toggle-btn" onclick="toggleTheme()">Dark Mode</button>
     </div>
   </header>
@@ -1252,6 +1252,54 @@
     if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMobileMenu);
 
     updateCartUI();
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+  const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+const signInWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log("User signed in:", result.user);
+    })
+    .catch((error) => {
+      console.error("Sign-in error:", error);
+    });
+};
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+const signInWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log("User signed in:", result.user);
+    })
+    .catch((error) => {
+      console.error("Sign-in error:", error);
+    });
+};
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD3XsZz-oJErxcIYSTxl9cylX-vITi_k1E",
+    authDomain: "nofikile-27.firebaseapp.com",
+    projectId: "nofikile-27",
+    storageBucket: "nofikile-27.firebasestorage.app",
+    messagingSenderId: "493833677254",
+    appId: "1:493833677254:web:c4399057c61372e2e12ac7",
+    measurementId: "G-6RR1K8M4QD"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   </script>
 </body>
 </html>
